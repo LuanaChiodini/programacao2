@@ -26,4 +26,4 @@ def form_alterar_pessoa():
 def exibir_mensagem():
 	return render_template("exibir_mensagem.html")
 
-app.run(debug=True)
+app.run(debug=True, host="0.0.0.0")
