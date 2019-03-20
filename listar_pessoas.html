@@ -39,6 +39,9 @@
 					<td><a href="form_inserir_pessoa.html">incluir</a></td>
 				</tr>
 			</table>
+			{% for pessoas in lista: %}
+				{{pessoas.nome, pessoas.rua, pessoas.telefone}} <br>
+			{%endfor%}
 			<input type="submit" value="Salvar" name="salvar">
 		</form>
 	</body>
