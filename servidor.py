@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -7,20 +7,25 @@ app = Flask(__name__)
 def inicio():
 	return render_template("inicio.html")
 
+pessoas = []
+
 class Pessoa():
-	def __init__(self, nome, rua, telefone):
+	def __init__(self, nome, endereco, telefone):
 		self.nome = nome
-		self.rua = rua
+		self.endereco = endereco
 		self.telefone = telefone
 
 @app.route("/listar_pessoas")
 def listar_pessoas():
-	pessoas = [ Pessoa("Luana", "Alex Robe", "9161-9082"),
-				Pessoa("Grazi", "Frederico Jesen", "9911-2233")
-	]
-	print(pessoas)
 	return render_template("listar_pessoas.html", lista=pessoas)
 
+@app.route("/cadastrar_pessoa")
+def adicionar():
+	nome = request.args.get("nome")
+	endereco = request.args.get("endereco")
+	telefone = request.args.get("telefone")
+	pessoas.append(Pessoa(nome, endereco, telefone))
+	return render_template("exibir_mensagem.html", pessoa=(nome,endereco,telefone)) 
 
 @app.route("/form_inserir_pessoa")
 def form_inserir_pessoa():

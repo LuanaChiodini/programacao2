@@ -1,9 +1,9 @@
 class Pessoa():
-	def __init__(self, nome, rua, telefone):
+	def __init__(self, nome, endereco, telefone):
 		self.nome = nome
-		self.rua = rua
+		self.endereco = endereco
 		self.telefone = telefone
 
 if __name__ == "__main__":
 	pessoa = Pessoa("Maria", "rua", "1111-1111") 
-	print(pessoa.nome, pessoa.rua, pessoa.telefone)
+	print(pessoa.nome, pessoa.endereco, pessoa.telefone)

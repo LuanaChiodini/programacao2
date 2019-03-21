@@ -15,36 +15,23 @@
 	</style>
 	<body>
 		<p>Para retornar ao início: <a href="/">aqui</a></p>
-		<form action="exibir_mensagem">
-			<table>
-				<tr>
-					<th>Nome Completo</th>
-					<th>Data de nascimento</th>
-					<th>CPF</th>
-				</tr>
-				<tr>
-					<td>Luana Chiodini</td>
-					<td>08/11/2001</td>
-					<td>12345678910</td>
-					<td><a href="form_alterar_pessoa">alterar</a></td>
-					<td><a href="form_excluir_pessoa">excluir</a></td>
-					<td><a href="form_inserir_pessoa">incluir</a></td>
-				</tr>
-				<tr>
-					<td>Nathalia Kanis</td>
-					<td>27/03/2002</td>
-					<td>98765432111</td>
-					<td><a href="form_alterar_pessoa">alterar</td>
-					<td><a href="form_excluir_pessoa">excluir</a></td>
-					<td><a href="form_inserir_pessoa">incluir</a></td>
-				</tr>
-			</table>
+		<table>
+			<tr>
+				<th name="nome">Nome Completo</th>
+				<th name="endereco">Endereço</th>
+				<th name="telefone">Telefone</th>
+				<th name="incluir"><a href="/form_inserir_pessoa">Incluir</a></th>
+			</tr>
 			{% for pessoa in lista %}
-				{{pessoa.nome}}<br>
-				{{pessoa.rua}}<br>
-				{{pessoa.telefone}}<br>
+				<tr>
+					<td>{{pessoa.nome}}</td>
+					<td>{{pessoa.endereco}}</td>
+					<td>{{pessoa.telefone}}</td>
+					<td><a href="/form_alterar_pessoa">alterar</a></td>
+					<td><a href="/form_excluir_pessoa">excluir</a></td>
+				</tr>
 			{% endfor %}
-			<input type="submit" value="Salvar" name="salvar">
-		</form>
+		</table>
+
 	</body>
 </html>
