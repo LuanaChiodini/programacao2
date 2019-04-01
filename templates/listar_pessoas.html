@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+	<html>
 	<head>
-		<title>Lista de pessoas</title>
+		<title>lista de pessoas</title>
 		<meta charset="utf-8">
 	</head>
 	<style>
-		table, th, td {
-			width: 50%; 
+		table, th, tr {
+			width: 20%;
 			border: 1px solid black;
 			border-collapse: collapse;
 			text-align: center;
@@ -14,24 +14,22 @@
 		}
 	</style>
 	<body>
-		<p>Para retornar ao início: <a href="/">aqui</a></p>
 		<table>
 			<tr>
-				<th name="nome">Nome Completo</th>
+				<th name="nome">Nome</th>
 				<th name="endereco">Endereço</th>
-				<th name="telefone">Telefone</th>
-				<th name="incluir"><a href="/form_inserir_pessoa">Incluir</a></th>
+				<th name="cpf">CPF</th>
+				<th name="inserir"><a href="/form_inserir_pessoa">inserir</a></th>
 			</tr>
-			{% for pessoa in lista %}
-				<tr>
-					<td>{{pessoa.nome}}</td>
-					<td>{{pessoa.endereco}}</td>
-					<td>{{pessoa.telefone}}</td>
-					<td><a href="/form_alterar_pessoa">alterar</a></td>
-					<td><a href="/form_excluir_pessoa">excluir</a></td>
-				</tr>
-			{% endfor %}
+		{% for pessoa in lista: %}
+			<tr>
+				<td>{{pessoa.nome}}</td>
+				<td>{{pessoa.endereco}}</td>
+				<td>{{pessoa.cpf}}</td>
+				<td><a href="/form_excluir_pessoa">excluir</a></td>
+				<td><a href="/form_alterar_pessoa">alterar</a></td>
+			</tr>
+		{% endfor %}
 		</table>
-
 	</body>
 </html>
