@@ -31,11 +31,10 @@ def alterar_pessoa():
 
 @app.route("/form_excluir_pessoa")
 def excluir_pessoa():
-	achou = None
 	cpf = request.args.get("cpf")
 	for p in pessoas:
 		if p.cpf == cpf:
-			pessoas.remove(achou)
+			pessoas.remove(p)
 	return render_template("exibir_mensagem.html", mensagem="pessoa excluída")
 
 app.run()
