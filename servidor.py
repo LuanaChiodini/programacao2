@@ -37,6 +37,4 @@ def excluir_pessoa():
 			pessoas.remove(p)
 	return render_template("exibir_mensagem.html", mensagem="pessoa excluída")
 
-app.run()
-
-app = run(debug=True, host="0.0.0.0")
+app.run(debug=True, host="0.0.0.0")
