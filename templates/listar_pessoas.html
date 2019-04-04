@@ -26,7 +26,7 @@
 				<td>{{pessoa.nome}}</td>
 				<td>{{pessoa.endereco}}</td>
 				<td>{{pessoa.cpf}}</td>
-				<td><a href="/form_excluir_pessoa">excluir</a></td>
+				<td><a href="/form_excluir_pessoa?cpf={{p.cpf}}">excluir</a></td>
 				<td><a href="/form_alterar_pessoa">alterar</a></td>
 			</tr>
 		{% endfor %}
