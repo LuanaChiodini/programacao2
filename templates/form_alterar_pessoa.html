@@ -8,5 +8,14 @@
 		<p>Para retornar ao início: <a href="/">aqui</a></p>
 		<p>Para mostrar a lista de pessoas: <a href="listar_pessoas">aqui</a></p>
 		<p>Para ver a mensagem: <a href="exibir_mensagem">aqui</a></p>
+
+		<form action="/alterar_pessoa">
+			Nome: <input type="text" name="nome" value="{{informacao.nome}}">
+			Endereço: <input type="text" name="endereco" value="{{informacao.endereco}}">
+			CPF: <input type="text" name="cpf" value="{{informacao.cpf}}">
+			<input type="hidden" name="cpf_original" value="{{informacao.cpf}}">
+
+			<button>Alterar</button>
+		</form>
 	</body>
 </html>
