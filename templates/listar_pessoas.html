@@ -4,30 +4,52 @@
 		<title>lista de pessoas</title>
 		<meta charset="utf-8">
 	</head>
-	<style>
-		table, th, tr {
-			width: 20%;
-			border: 1px solid black;
-			border-collapse: collapse;
-			text-align: center;
-			padding: 10px;
-		}
+	<style type="text/css">
+			.tg  {
+				border-collapse:collapse;
+				border-spacing:0;
+			}
+			.tg td{
+				font-family:Arial, sans-serif;
+				font-size:14px;
+				padding:10px 5px;
+				border-style:solid;
+				border-width:1px;
+				overflow:hidden;
+				word-break:normal;
+				border-color:black;
+			}
+			.tg th{
+				font-family:Arial, sans-serif;
+				font-size:14px;
+				font-weight:normal;
+				padding:10px 5px;
+				border-style:solid;
+				border-width:1px;
+				overflow:hidden;
+				word-break:normal;
+				border-color:black;
+			}
+			.tg .tg-0lax{
+				text-align:left;
+				vertical-align:top
+			}
 	</style>
 	<body>
-		<table>
+		<table class="tg">
 			<tr>
-				<th name="nome">Nome</th>
-				<th name="endereco">Endereço</th>
-				<th name="cpf">CPF</th>
-				<th name="inserir"><a href="/form_inserir_pessoa">inserir</a></th>
+				<th class="tg-olax" name="nome">Nome</th>
+				<th class="tg-olax" name="endereco">Endereço</th>
+				<th class="tg-olax" name="cpf">CPF</th>
+				<th class="tg-olax" name="inserir"><a href="/form_inserir_pessoa">inserir</a></th>
 			</tr>
 		{% for pessoa in lista: %}
 			<tr>
 				<td>{{pessoa.nome}}</td>
 				<td>{{pessoa.endereco}}</td>
 				<td>{{pessoa.cpf}}</td>
-				<td><a href="/form_excluir_pessoa?cpf={{p.cpf}}">excluir</a></td>
-				<td><a href="/form_alterar_pessoa">alterar</a></td>
+				<td><a href="/form_excluir_pessoa?cpf={{pessoa.cpf}}">excluir</a></td>
+				<td><a href="/form_alterar_pessoa?cpf={{pessoa.cpf}}">alterar</a></td>
 			</tr>
 		{% endfor %}
 		</table>
