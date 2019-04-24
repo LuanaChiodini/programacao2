@@ -36,20 +36,25 @@
 			}
 	</style>
 	<body>
+		<a href="/form_login">Login</a>
 		<table class="tg">
 			<tr>
 				<th class="tg-olax" name="nome">Nome</th>
 				<th class="tg-olax" name="endereco">Endereço</th>
 				<th class="tg-olax" name="cpf">CPF</th>
+				{% if session["usuario"]: %}
 				<th class="tg-olax" name="inserir"><a href="/form_inserir_pessoa">inserir</a></th>
+				{% endif %}
 			</tr>
 		{% for pessoa in lista: %}
 			<tr>
 				<td>{{pessoa.nome}}</td>
 				<td>{{pessoa.endereco}}</td>
 				<td>{{pessoa.cpf}}</td>
-				<td><a href="/form_excluir_pessoa?cpf={{pessoa.cpf}}">excluir</a></td>
-				<td><a href="/form_alterar_pessoa?cpf={{pessoa.cpf}}">alterar</a></td>
+				{% if session["usuario"]: %}
+					<td><a href="/form_excluir_pessoa?cpf={{pessoa.cpf}}">excluir</a></td>
+					<td><a href="/form_alterar_pessoa?cpf={{pessoa.cpf}}">alterar</a></td>
+				{% endif %}
 			</tr>
 		{% endfor %}
 		</table>
