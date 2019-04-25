@@ -74,7 +74,7 @@ def login():
 		return "login e/ou senha inválidos"
 
 @app.route("/logout")
-def logout();
+def logout():
 	session.pop("usuario")
 	return redirect("/")
 

@@ -36,7 +36,12 @@
 			}
 	</style>
 	<body>
-		<a href="/form_login">Login</a>
+		{{ % if session["usuario"]: % }}
+			<a href="/logout">Logout</a>
+		{{ % else: % }}
+			<a href="/form_login">Login</a>
+		{{ % endif: % }}
+		
 		<table class="tg">
 			<tr>
 				<th class="tg-olax" name="nome">Nome</th>
