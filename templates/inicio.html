@@ -5,6 +5,11 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
+		{% if session["usuario"]: %}
+			<a href="/logout">Logout</a>
+		{% else: %}
+			<a href="/form_login">Login</a>
+		{% endif %}
 		<p>Para listar as pessoas clique <a href="/listar_pessoas">aqui</a></p>
 	</body>
 </html>

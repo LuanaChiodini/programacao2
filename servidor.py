@@ -64,14 +64,15 @@ def alterar_pessoa():
 def form_login():
 	return render_template("form_login.html")
 
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
-	login = request.args.get("login")
-	senha = request.args.get("senha")
+	login = request.form["login"]
+	senha = request.form["senha"]
 	if login == "luana" and senha == "1234":
+		session["usuario"] = login
 		return redirect("/")
 	else:
-		return "login e/ou senha inválidos"
+		return render_template("exibir_mensagem.html", mensagem="login e/ou senha inválidos")
 
 @app.route("/logout")
 def logout():

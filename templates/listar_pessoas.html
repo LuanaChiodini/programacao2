@@ -36,11 +36,11 @@
 			}
 	</style>
 	<body>
-		{{ % if session["usuario"]: % }}
+		{% if session["usuario"]: %}
 			<a href="/logout">Logout</a>
-		{{ % else: % }}
+		{% else: %}
 			<a href="/form_login">Login</a>
-		{{ % endif: % }}
+		{% endif %}
 		
 		<table class="tg">
 			<tr>
