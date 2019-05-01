@@ -45,7 +45,7 @@ def form_alterar_pessoa():
 	for p in pessoas:
 		if p.cpf == cpf:
 			return render_template("form_alterar_pessoa.html", informacao=p)
-	return "pessoa excluída"
+	return "pessoa não encontrada"
 
 @app.route("/alterar_pessoa")
 def alterar_pessoa():
