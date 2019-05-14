@@ -15,7 +15,7 @@ def inicio():
 	return render_template("inicio.html")
 
 @app.route("/listar_pessoas")
-def listar():
+def listar_pessoas():
 	return render_template("listar_pessoas.html", lista=pessoas)
 
 @app.route("/cadastrar_pessoa")
