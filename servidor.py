@@ -13,16 +13,16 @@ def inicio():
 
 @app.route("/listar_pessoas")
 def listar_pessoas():
-	return render_template("listar_pessoas.html", lista=Pessoas.select())
+	return render_template("listar_pessoas.html", lista=Pessoa.select())
 
 @app.route("/cadastrar_pessoa")
 def casdastrar_pessoa():
 	nome = request.args.get("nome")
 	endereco = request.args.get("endereco")
 	cpf = request.args.get("cpf")
-	pessoas.append(Pessoa.create(nome=request.form["nome"],
-								endereco=request.form["endereco"],
-								cpf=request.form["cpf"]))
+	Pessoa.create(nome=nome,
+				endereco=endereco,
+				cpf=cpf)
 	return render_template("exibir_mensagem.html", mensagem="cadastro concluído", pessoa=(nome,endereco,cpf))
 
 @app.route("/form_inserir_pessoa")

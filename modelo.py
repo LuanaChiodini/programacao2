@@ -13,12 +13,14 @@ class Pessoa(BaseModel):
 	endereco = CharField()
 	cpf = CharField(primary_key=True)
 
-if os.path.exists(arq):
-	os.remove(arq)
+if __name__ == "__main__":
+	
+	if os.path.exists(arq):
+		os.remove(arq)
 
-try:
-	db.connect()
-	db.create_tables([Pessoa])
+	try:
+		db.connect()
+		db.create_tables([Pessoa])
 
-except OperationError as erro:
-	print("erro ao criar as tabelas")
+	except OperationError as erro:
+		print("erro ao criar as tabelas")
