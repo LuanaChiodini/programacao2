@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
-
-class Pessoa():
-	def __init__(self, nome, endereco, cpf):
-		self.nome = nome
-		self.endereco = endereco
-		self.cpf = cpf
+import os
+from peewee import *
+from modelo import *
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "2243"
@@ -16,14 +13,16 @@ def inicio():
 
 @app.route("/listar_pessoas")
 def listar_pessoas():
-	return render_template("listar_pessoas.html", lista=pessoas)
+	return render_template("listar_pessoas.html", lista=Pessoas.select())
 
 @app.route("/cadastrar_pessoa")
 def casdastrar_pessoa():
 	nome = request.args.get("nome")
 	endereco = request.args.get("endereco")
 	cpf = request.args.get("cpf")
-	pessoas.append(Pessoa(nome, endereco, cpf))
+	pessoas.append(Pessoa.create(nome=request.form["nome"],
+								endereco=request.form["endereco"],
+								cpf=request.form["cpf"]))
 	return render_template("exibir_mensagem.html", mensagem="cadastro concluído", pessoa=(nome,endereco,cpf))
 
 @app.route("/form_inserir_pessoa")
