@@ -15,11 +15,11 @@ def inicio():
 def listar_pessoas():
 	return render_template("listar_pessoas.html", lista=Pessoa.select())
 
-@app.route("/cadastrar_pessoa")
+@app.route("/cadastrar_pessoa", methods=["POST"])
 def casdastrar_pessoa():
-	nome = request.args.get("nome")
-	endereco = request.args.get("endereco")
-	cpf = request.args.get("cpf")
+	nome = request.form["nome"]
+	endereco = request.form["endereco"]
+	cpf = request.form["cpf"]
 	Pessoa.create(nome=nome,
 				endereco=endereco,
 				cpf=cpf)
@@ -32,32 +32,30 @@ def form_inserir_pessoa():
 @app.route("/form_excluir_pessoa")
 def form_excluir_pessoa():
 	if session["usuario"]:
-		cpf = request.args.get("cpf")
-		for p in pessoas:
-			if p.cpf == cpf:
-				pessoas.remove(p)
+		id = request.args.get("id")
+		Pessoa.delete_by_id(request.args.get("id"))
 		return render_template("exibir_mensagem.html", mensagem="pessoa excluída")
 
 @app.route("/form_alterar_pessoa")
 def form_alterar_pessoa():
-	cpf = request.args.get("cpf")
+	id = request.args.get("id")
 	for p in pessoas:
-		if p.cpf == cpf:
+		if p.id == id:
 			return render_template("form_alterar_pessoa.html", informacao=p)
 	return "pessoa não encontrada"
 
 @app.route("/alterar_pessoa")
 def alterar_pessoa():
-	procurado = request.args.get("cpf_original")
-	nome = request.args.get("nome")
-	endereco = request.args.get("endereco")
-	cpf = request.args.get("cpf")
-	nova_pessoa = Pessoa(nome, endereco, cpf)
-	for i in range(len(pessoas)):
-		if pessoas[i].cpf == procurado:
-			pessoas[i] = nova_pessoa
-			return redirect("/listar_pessoas")
-	return "pessoa não encontrada"
+	id = request.form["id"]
+	nome = request.form["nome"]
+	endereco = request.form["endereco"]
+	cpf = request.form["cpf"]
+	cidadao = Pessoa.get_by_id(request.form["id"])
+	cidadao.nome = nome
+	cidadao.endereco = endereco
+	cidadao.cpf = cpf
+	cidadao.save()
+	return redirect("/listar_pessoas")
 
 @app.route("/form_login")
 def form_login():

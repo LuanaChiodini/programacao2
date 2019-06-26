@@ -57,8 +57,8 @@
 				<td>{{pessoa.endereco}}</td>
 				<td>{{pessoa.cpf}}</td>
 				{% if session["usuario"]: %}
-					<td><a href="/form_excluir_pessoa?cpf={{pessoa.cpf}}">excluir</a></td>
-					<td><a href="/form_alterar_pessoa?cpf={{pessoa.cpf}}">alterar</a></td>
+					<td><a href="/form_excluir_pessoa?id={{pessoa.id}}">excluir</a></td>
+					<td><a href="/form_alterar_pessoa?id={{pessoa.id}}">alterar</a></td>
 				{% endif %}
 			</tr>
 		{% endfor %}

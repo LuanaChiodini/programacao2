@@ -11,7 +11,7 @@ class BaseModel(Model):
 class Pessoa(BaseModel):
 	nome = CharField()
 	endereco = CharField()
-	cpf = CharField(primary_key=True)
+	cpf = CharField()
 
 if __name__ == "__main__":
 	
