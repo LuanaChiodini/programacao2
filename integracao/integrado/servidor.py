@@ -1,0 +1,14 @@
+from flask import Flask, render_template
+from modelo import Pessoa
+
+app = Flask(__name__)
+
+@app.route("/")
+def inicio():
+    return "sistema de pessoas. <a href=/listar_pessoas>Operação listar</a>"
+
+@app.route("/listar_pessoas")
+def listar_pessoas():
+    return render_template("listar_pessoas.html", lista = Pessoa.select())
+
+app.run(debug=True)
