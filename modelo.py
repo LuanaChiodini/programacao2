@@ -12,6 +12,7 @@ class Pessoa(BaseModel):
 	nome = CharField()
 	endereco = CharField()
 	cpf = CharField()
+	email = CharField()
 
 if __name__ == "__main__":
 	

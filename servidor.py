@@ -19,11 +19,13 @@ def listar_pessoas():
 def casdastrar_pessoa():
 	nome = request.form["nome"]
 	endereco = request.form["endereco"]
-	cpf = request.form["cpf"]
+	cpf = request.form["cpf"],
+	email = request.form["email"]
 	Pessoa.create(nome=nome,
 				endereco=endereco,
-				cpf=cpf)
-	return render_template("exibir_mensagem.html", mensagem="cadastro concluído", pessoa=(nome,endereco,cpf))
+				cpf=cpf,
+				email=email)
+	return render_template("exibir_mensagem.html", mensagem="cadastro concluído", pessoa=(nome,endereco,cpf,email))
 
 @app.route("/form_inserir_pessoa")
 def form_inserir_pessoa():
@@ -50,10 +52,12 @@ def alterar_pessoa():
 	nome = request.form["nome"]
 	endereco = request.form["endereco"]
 	cpf = request.form["cpf"]
+	email = request.form["email"]
 	cidadao = Pessoa.get_by_id(request.form["id"])
 	cidadao.nome = nome
 	cidadao.endereco = endereco
 	cidadao.cpf = cpf
+	cidadao.email = email
 	cidadao.save()
 	return redirect("/listar_pessoas")
 
